@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historic and Universalist Professions of Faith</title>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --primary-accent: #3b82f6;
+            --secondary-accent: #059669;
+            --bg-main: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            padding-bottom: 4rem;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-family: "Georgia", serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation / Quick Links */
+        nav {
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            padding: 0.75rem 0;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+
+        .nav-container a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-container a:hover {
+            background-color: #f1f5f9;
+            color: var(--primary-accent);
+        }
+
+        /* Main Container & Layout */
+        .container {
+            max-width: 860px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            font-family: "Georgia", serif;
+            color: var(--text-dark);
+            font-size: 1.75rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        blockquote {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary-accent);
+            margin: 1.25rem 0;
+            padding: 1rem 1.25rem;
+            color: #334155;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        blockquote p {
+            margin-bottom: 0.75rem;
+        }
+
+        blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Styled Creed Text Box */
+        .creed-box {
+            background: #fafaf9;
+            border: 1px solid #e7e5e4;
+            border-left: 4px solid var(--secondary-accent);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            font-family: "Georgia", serif;
+            line-height: 2;
+            color: #1c1917;
+        }
+
+        .legend {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 0.85rem;
+            background: #f1f5f9;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        .legend strong {
+            color: var(--text-dark);
+        }
+
+        /* Formatted Lists */
+        ol, ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        li strong {
+            color: var(--text-dark);
+        }
+
+        .scripture-ref {
+            display: block;
+            margin-top: 0.25rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* Footnotes */
+        .notes-section {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            background: #f8fafc;
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .notes-section h3 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .notes-section ol {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .notes-section li {
+            margin-bottom: 0.4rem;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            header h1 {
+                font-size: 1.875rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Historic &amp; Universalist Professions of Faith</h1>
+        <p>A collection of foundational credal statements and historical perspectives</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#apostles">Apostles' Creed</a>
+            <a href="#1790">1790 Articles</a>
+            <a href="#winchester">Winchester Profession</a>
+            <a href="#bible-creed">Bible Creed</a>
+            <a href="#faith-1828">1828 Faith</a>
+            <a href="#essential-1878">1878 Principles</a>
+            <a href="#proposed-1887">1887 Proposed</a>
+            <a href="#five-1899">1899 Five Principles</a>
+            <a href="#gloria-1903">1903 Gloria Patri</a>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <!-- Apostles' Creed Section -->
+        <section id="apostles" class="card">
+            <h2>The Apostles' Creed</h2>
+            <p>J. W. Hanson, in his book about Universalism in the early church, says concerning the "Apostles' Creed":</p>
+            
+            <blockquote>
+                <p>"<em>The Apostles' Creed,</em> so called, the oldest existing authorized declaration of Christian faith in the shape of a creed was probably in existence in various modified forms for a century or so before the beginning of the Fourth Century, when it took its present shape, possibly between A.D. 250 and 350. It is first found in Rufinus, who wrote at the end of the Fourth and the beginning of the Fifth Century. No allusion is made to it before these dates by Justin Martyr, Clement, Origen, the historian Eusebius, or any of their contemporaries, all whom make declarations of Christian belief, nor is there any hint in antecedent literature that any such document existed. Individual declarations of faith were made, however, quite unlike the pseudo Apostles' Creed, by Irenaeus, Tertullian, Cyprian, Gregory Thaumaturgus, etc. Hagenbach<sup>2</sup> assures us that it was 'probably inspired of various confessions of faith used by the primitive church in the baptismal service.' Mosheim declares: 'All who have any knowledge of antiquity confess unanimously that the opinion (that the apostles composed the Apostles' Creed) is a mistake, and has no foundation.'<sup>3</sup>"</p>
+                <p>"The clauses 'the Holy Catholic Church,' 'the communion of Saints,' 'the forgiveness of sins,' were added after A.D. 250. 'He descended into hell' was later than the compilation of the original creed — as late as A.D. 359. The document is here given. The portion in <strong>Bold type</strong> was probably adopted in the earlier part or middle of the Second Century<sup>4</sup> and was in Greek; the <em>Italic portion</em> was added later by the Roman Church, and was in Latin:"</p>
+            </blockquote>
+
+            <div class="legend">
+                <strong>Formatting Legend:</strong> <strong>Bold text</strong> represents the 2nd-century Greek text; <em>Italic text</em> indicates later additions by the Roman Church in Latin.
+            </div>
+
+            <div class="creed-box">
+                <strong>"I believe in God the Father Almighty,</strong> <em>(maker of heaven and earth)</em>.<br>
+                <strong>And in Jesus Christ his only son our Lord,</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>who was</strong> <em>(conceived)</em> <strong>by the Holy Ghost,</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>born of the Virgin Mary,</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>suffered under Pontius Pilate,</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>was crucified</strong> <em>(dead)</em> <strong>and buried.</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<em>(He descended into hell.)</em><br>
+                <strong>The third day he arose again from the dead;</strong><br>
+                <strong>He ascended into heaven,</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>and sitteth at the right hand of</strong> <em>(God)</em> <strong>the Father</strong> <em>(Almighty)</em>.<br>
+                <strong>From thence he shall come to judge the quick and the dead.</strong><br>
+                <strong>I believe in the Holy Ghost,</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>the holy</strong> <em>(catholic)</em> <strong>Church;</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<em>(the communion of saints)</em><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>the forgiveness of sins;</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>the resurrection of the body;</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<em>(and the life everlasting)</em><sup>5</sup>. <strong>Amen."</strong>
+            </div>
+
+            <blockquote>
+                <p>"It will be seen that not a word is here uttered of the duration of punishment. The later form speaks of 'aionian life,' but does not refer to aionian death, or punishment. It is incredible that this declaration of faith, made at a time when the world was ignorant of what constituted the Christian belief, and which was made for the purpose of informing the world, should not convey a hint of so vital a doctrine as that of endless punishment, if at that time that dogma was a tenet of the church."</p>
+            </blockquote>
+
+            <p>In the chapter, <em>"The Earliest Creeds"</em>, of this book<sup>1</sup>, J. W. Hanson shows that none of the early church creeds (the Nicene Creed, the Niceo-Constantinopolitan Creed, etc.) contained anything that was against Universalism. In the concluding remarks of this chapter, he says:</p>
+
+            <blockquote>
+                <p>"Thus the credal declarations of the Christian church for almost four hundred years are entirely void of the lurid doctrine (endless punishment) with which they afterwards blazed for more than a thousand years. The early creeds contain no hint of it, and no whisper of condemnation of the doctrine of universal restoration as taught by Clement, Origen, the Gregories, Basil the Great, and multitudes besides." . . . . "It is insupposable that endless punishment was a doctrine of the early church, when it is seen that not one of the early creeds embodied it."</p>
+            </blockquote>
+
+            <div class="notes-section">
+                <h3>Notes</h3>
+                <ol>
+                    <li><em>"Universalism the Prevailing Doctrine of the Christian Church During Its First Five Hundred Years"</em>, pages 7-8, by J. W. Hanson, D.D., 1899</li>
+                    <li>Text-book of Christian Doctrine; Geisler's Text Book: Neander</li>
+                    <li>Murdoch's Mosheim Inst., Eccl. Hist</li>
+                    <li>Bunsen's Hippolytus and His Age</li>
+                    <li>Aionion, the original of "everlasting."</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 1790 Articles of Faith Section -->
+        <section id="1790" class="card">
+            <h2>1790 Articles of Faith</h2>
+            <p>These are the Articles of Faith composed and adopted by the churches believing in the Salvation of all Men, that met in Philadelphia on the 25th of May, 1790.</p>
+
+            <ul>
+                <li><strong>Of the Holy Scriptures.</strong> We believe the Scriptures of the Old and New Testament to contain a revelation of the perfections and will of God, and the rule of faith and practice.</li>
+                <li><strong>Of the Supreme Being.</strong> We believe in one God, infinite in all his perfections, and that these perfections are all modifications of infinite, adorable, incomprehensible, and unchangeable love.</li>
+                <li><strong>Of the Mediator.</strong> We believe that there is one Mediator between God and men, the man Christ Jesus, in whom dwelleth all the fullness of the Godhead bodily, who by giving himself a ransom for all, hath redeemed them to God by his blood; and who, by the merit of his death, and the efficacy of his spirit, will finally restore the whole human race to happiness.</li>
+                <li><strong>Of the Holy Ghost.</strong> We believe in the Holy Ghost, whose office is to make known to sinners the truth of this salvation, through the medium of the Holy Scriptures, and to reconcile the hearts of the children of men to God, and thereby to dispose them to genuine holiness.</li>
+                <li><strong>Of Good Works.</strong> We believe in the obligation of the moral law as to the rule of life; and we hold, that the love of God manifested to man in a redeemer, is the best means of producing obedience to that law, and promoting a holy, active, and useful life.</li>
+            </ul>
+        </section>
+
+        <!-- Winchester Profession Section -->
+        <section id="winchester" class="card">
+            <h2>The Winchester Profession of Faith</h2>
+            <p>In 1840, Thomas Whittemore wrote in his book <em>"Plain Guide to Universalism"</em>, about the development of this profession of faith:</p>
+
+            <blockquote>
+                <p>"Although Universalists do not believe in the authority of man-made creeds, it became necessary, in the year 1803, for them to make a public declaration of their sentiments.</p>
+                <p>The Supreme Court of New Hampshire had decreed, that Congregationalists and Universalists, in law, were one and the same denomination, and that, Universalists were therefore liable to be taxed to the support of Congregational parishes.</p>
+                <p>To meet this extraordinary state of things, the General Convention of Universalists, in the session at Strafford, VT., to show that Universalists differed widely from Congregationalists in their religious views. This committee, consisting of Z. Streeter, G. Richards, H. Ballou, W. Ferriss, and Z. Lathe, reported at the session in Winchester, NH., the following year. On this committee were persons who believed in future punishment, and those who did not, but a majority, we think, of the former. They endeavored to frame their articles of faith in such a way, as that both classes of Universalists might cordially unite in them. The articles were drawn by the venerated Ferriss, himself a believer in future punishment, and were in the following words:"</p>
+            </blockquote>
+
+            <ol>
+                <li>We believe, that the Holy Scriptures of the Old and New Testaments contain a revelation of the character of God, and of the duty, interest, and final destination of mankind.</li>
+                <li>We believe there is one God, whose nature is love; revealed in one Lord Jesus Christ, by one Holy Spirit of grace, who will finally restore the whole family of mankind to holiness and happiness.</li>
+                <li>We believe, that holiness and true happiness are inseparably connected; and that believers ought to maintain order, and practice good works, for these things are good and profitable unto men.</li>
+            </ol>
+
+            <p>When the Winchester Profession was adopted by the convention in 1803, the delegates also added a "liberty clause" because additional statements were anticipated. This clause allowed individual churches and associations to adopt their own statements as additions to the Winchester Profession. This "liberty clause" was:</p>
+
+            <blockquote>
+                <p>"Yet while we, as an Association, adopt a general Profession of Belief and Plan of Church Government, we leave it to the several Churches and Societies, or to smaller associations of churches, if such should be formed, within the limits of our General Association, to continue, or adopt within themselves, such more particular articles of faith, or modes of discipline, as may appear to them best under their particular circumstances, provided they do not disagree with our general Profession and Plan."</p>
+            </blockquote>
+
+            <p>One such addition that was adopted by many as a fourth article to the Profession is the following:</p>
+
+            <ul>
+                <li>We believe that God, as the moral governor of the universe, will bestow righteous and equitable rewards and punishments upon all mankind according to their several characters or deserts; but that all punishment will be remedial, and consequently limited.</li>
+            </ul>
+        </section>
+
+        <!-- Bible Creed Section -->
+        <section id="bible-creed" class="card">
+            <h2>Bible Creed</h2>
+            <p>Also, in 1840, Thomas Whittemore wrote in his book <em>"Plain Guide to Universalism"</em>, the following:</p>
+
+            <blockquote>
+                <p>"But, lest some of our readers should object to the brevity of the above Profession, [the Winchester Profession of Faith given above] we shall introduce in this place a form of faith, designed to express the general sentiments of Universalists, drawn up several years since, by Rev. Dolphus Skinner, of Utica, NY., and first published in connection with his 'Letters to Aikin &amp; Lansing,' Utica, NY., 1833."</p>
+            </blockquote>
+
+            <ol>
+                <li>
+                    <strong>Concerning God and Christ.</strong> We believe that the Lord our God is <em>one</em> Lord, — that we all have <em>one Father; one God</em> hath created us, — and hath made of one blood all nations of men, to dwell on all the face of the earth; — that though there be that are called gods, whether in heaven or in earth, (as there are gods many and lords many,) yet to us there is but <em>one God, the Father</em>, of whom are all things, and we in Him; and <em>one Lord Jesus Christ</em>, by whom are all things, and we by Him, (for God hath made him both Lord and Christ,) for there is one God and one mediator between God and men, the man Christ Jesus, who gave Himself a ransom for all, to be testified in due time.
+                    <span class="scripture-ref">Deut. 6:4; Mark 12:29; Mal. 2:10; Acts 2:36 and 17:26; 1 Cor. 8:5,6; 1 Tim 2:5,6.</span>
+                </li>
+                <li>
+                    <strong>Concerning the character of God.</strong> We believe the Lord our God is Almighty, and of great power, — that His understanding (or wisdom) is infinite, — that He is love itself, — good unto all, and His tender mercies over all His works, — that He loves all the things that are, and abhors nothing that His hands have made, for He never would have created any thing to have hated it, — that He is a just God and a Savior, — Who will have all men to be saved and come to the knowledge of the truth, and Who works all things after the counsel of His own will, — that in Him mercy and truth are met together, righteousness and peace have embraced each other.
+                    <span class="scripture-ref">Gen. 17:1; Ps. 147:5; Ps. 85:10; Ps. 145:9; Isa. 45:21; 1 Tim. 2:4; Eph. 1:11; 1 John 4:8,16.</span>
+                </li>
+                <li>
+                    <strong>Concerning the mission and mediation of Christ.</strong> We believe God sent His Son to be the Savior of the World, — that to this end, (as He loved both His Son and the World,) He gave all things into His hand, even power over all flesh, that He might give eternal life to as many as the Father hath given Him, and that all that the Father gave Him shall so come to Him as not to be cast out, — that, as He tasted death for every man, and is a propitiation for the sins of the whole world, He shall see of the travail of His soul and be satisfied, — that as in Adam all die, even so in Christ shall all be made alive, — that, having brought life and immortality to light by the Gospel, He shall continue to reign until death, the last enemy, is destroyed, and all things are subdued unto Him; till every knee shall bow and every tongue confess Him Lord, to the glory of God the Father, — and, that then He will deliver up the reconciled kingdom to the Father, that God may be all in all.
+                    <span class="scripture-ref">1 John 2:2; 4:14; John 3:35; 6:37; 17:2; Heb. 2:9; Isa. 53:11; 1 Cor. 15:22,24-28; 2 Tim. 1:10; Phil. 2:10,11.</span>
+                </li>
+                <li>
+                    <strong>Concerning the Motive to Obedience &amp;c.</strong> We believe it is our duty to love God, because He first loved us, — that, if God so loved us, we ought also to love one another, — that the goodness of God leads to repentance, — that the grace of God, that bringeth salvation to all men, hath appeared, teaching us, that, denying ungodliness and worldly lusts, we should live soberly, righteously, and godly in this present world, and that those who believe in God ought to be careful to maintain good works; for these things are good and profitable unto men.
+                    <span class="scripture-ref">1 John 4:11,19; Rom. 2:4; Titus 2:11,12; 3:8.</span>
+                </li>
+                <li>
+                    <strong>Concerning the reward of obedience.</strong> We believe, that great peace have they who love God's law, and nothing shall offend them, — they are like trees planted by the rivers of water, that bring forth their fruit in season; their leaf, also, shall not wither; and, whatsoever they do shall prosper, — that wisdom's ways are ways of pleasantness, and all her paths are peace, — that she is a tree of life to them that lay hold of her, and happy is every one that retains her, — that Christ's yoke is easy and His burden is light, and all who come to Him find rest to their souls, — that, though God is the Savior of all men, He is especially so of the believer, — and, that whoso looks into the perfect law of liberty, and continues therein, and is not a forgetful hearer, but a doer of the work, this man shall be blessed in his deed.
+                    <span class="scripture-ref">Ps. 1:3, and 119:165; Prov. 3:17, 18; Matt 11:28-30; Heb. 4:3; 1 Tim. 4:10; James 1:25.</span>
+                </li>
+                <li>
+                    <strong>Concerning punishment for disobedience.</strong> We believe the way of the transgressor is hard, — that the wicked are like the troubled sea when it cannot rest, whose waters cast up mire and dirt, for there is no peace, says our God, to the wicked, — that he that doeth wrong, shall receive for the wrong which he hath done, and there is no respect of persons, — that God will render to every man according to his deeds, — tribulation and anguish upon every soul of man that doeth evil, of the Jew first, and also of the Gentile.
+                    <span class="scripture-ref">Prov. 13:15; Isa. 57:20,21; Rom. 2:6,9; Col 3:25.</span>
+                </li>
+                <li>
+                    <strong>Concerning the limitation and remedial design of punishment.</strong> We believe the Lord will not cast off forever; but, though he cause grief, yet will he have compassion according to the multitude of his mercies, — that he will not contend forever, nor be always wroth, lest the spirit should fail before him, and the souls he has made, — that, although he may apparently forsake his children for a small moment, yet with great mercies will he gather them, — in a little wrath, he may hide his face from them for a small moment, but with everlasting kindness will he have mercy on them, and heal them, — that whom he loveth he chasteneth, (and he loveth and chasteneth all,) for their profit, that they may be partakers of his holiness, and be enabled afterwards to say, "before I was afflicted I went astray, but now have I kept thy word."
+                    <span class="scripture-ref">Lam. 3:31-32; Isa. 54:7-8, and 57:16-18; Heb. 12:7-11; Psa. 89:30-35, and 119:67.</span>
+                </li>
+                <li>
+                    <strong>Concerning the Scriptures, the doctrines they teach, and the duties they enjoin.</strong> We believe, that all Scripture, given by inspiration of God, is profitable for doctrine, for reproof, for correction, and instruction in righteousness, — that the prophecy came not in old time by the will of man; but holy men of God spoke as they were moved by the Holy Spirit, — that God hath spoken of the restitution of all things by the mouth of all His holy prophets since the world began, — that the word, gone out of His mouth in righteousness, shall not return void, but shall accomplish that which He pleases, insomuch, that every knee shall bow, and every tongue shall swear, saying, In the Lord have I righteousness and strength. From the Scriptures, (which we take as the rule and guide of our faith and practice,) we are taught, that the whole duty of man is, to fear God and keep His commandments; to deal justly, love mercy, and walk humbly with God; to do good to all men as we have opportunity; and that pure religion and undefiled before God and The Father, is this; to visit the fatherless and widows in their affliction, and keep ourselves uncorrupted from the world.
+                    <span class="scripture-ref">2 Tim. 3:16; 2 Peter 1:21; Acts 3:21; Isa. 45:23,24; 55:11; Micah 6:8; Eccl. 12:13; Gal. 6:10; James 1:27.</span>
+                </li>
+            </ol>
+
+            <blockquote>
+                <p>"We presume, that Universalists, in general, will agree to the doctrines here specified. They are all evidently drawn from the oracles of God; and the references, made at the end of each article, fully sustain the positions advanced in each."</p>
+                <p>"But still, we desire that it should be remembered, that the distinguishing feature of their faith, <em>is the eventual holiness and happiness of all men.</em> God has willed the salvation of all men; and has sent His Son to accomplish the transcendently great and glorious work. He has made a full revelation of Himself, and of the mission of His Son, and of His purpose to save all mankind, in his divine word, the true sense of which Universalists implicitly follow. The glory of God, and of His Son Jesus Christ, as manifested in the final holiness and happiness of all men, is the central sun of Universalism. This, with them, is the all-absorbing topic; the crowning excellence of revealed religion; the richest glory of God; the highest honor of Christ; the fullest joy of the saints; the sweetest answer to prayer; the strongest motive to praise; the most potent charm of Christian faith; a fountain of consolation in life; a holy triumph in death; the joy of angels, and of the spirits of just men made perfect. Such is the doctrine of the <em>ultimate salvation of all the human race.</em>"</p>
+            </blockquote>
+        </section>
+
+        <!-- Faith of Universalists 1828 Section -->
+        <section id="faith-1828" class="card">
+            <h2>Faith of Universalists</h2>
+            <p>In the April 5, 1828 edition of <em>"Utica Evangelical Magazine"</em>, the following profession of faith was printed:</p>
+
+            <ol>
+                <li>We believe in one supreme, eternal self existent God, infinite in wisdom, power and goodness, possessed of every possible perfection which can render His character amiable, reverend, exalted and glorious; Whose name and Whose nature are love; that He is the creator of all worlds and beings, <em>"good unto all, and his tender mercies over all his works."</em> (1 Cor. 8:6; Ps. 145:9).</li>
+                <li>We believe in one Lord Jesus Christ — that he is the <em>"mediator between God and men, who gave himself a ransom for all to be testified in due time"</em> — that <em>"the Father sent his Son to be the Saviour of the world;"</em> and to this end Christ <em>"was crucified upon the cross — arose from the dead on the third day — ascended on high"</em> — and will, eventually, <em>"see of the travail of his soul and be satisfied,"</em> when He shall have <em>"reconciled all things unto himself, through the blood of his cross, whether they be things in heaven or things on earth; and deliver up the kingdom to God the Father, that God may be all in all."</em> (1 Tim 2:5-6; 1 John 4:14; Rom. 14:9; Isa 53:11; Col 1:20; 1 Cor 8:6; 1 Cor 15:24, 28).</li>
+                <li>We believe in the divine authenticity of the Scriptures of the Old and New Testaments — that they are given by inspiration of God, and are <em>"profitable for doctrine, for reproof, for correction, and for instruction in righteousness, that the servants of God may be thoroughly furnished unto all good works."</em> (2 Tim 3:16-17).</li>
+                <li>We believe that God, as the moral governor of the universe, will bestow righteous and equitable rewards and punishments upon all mankind, according to their several characters or deserts; but that all punishment will be remedial, and consequently limited. (2 Cor 5:10; Col 3:25; 1 Pet 4:5; Rev 20:12-13; Psa 89:30, 33; Heb 12:5, 11).</li>
+                <li>We believe, according to the divine doctrine and preaching of Christ and His apostles, that repentance toward God for our sins, faith in our Lord Jesus Christ, and love to God and our fellow creatures, are means of grace appointed by God, and essential to our salvation, happiness, and glory. (Matt 4:17; Matt 22:37, 40; Mark 1:15; Acts 3:19; Heb 11:6).</li>
+                <li>In regard to baptism, we believe it the duty of every one to follow the dictates of his or her conscience, leaving each to judge, both of the subject and mode of baptism, as shall seem most consistent with Scripture and reason.</li>
+                <li>We believe that <em>"the grace of God that bringeth salvation to all men, teacheth us, that denying ungodliness and worldly desires, we should live soberly, righteously and religiously in this present world"</em> — that we should <em>"deal justly, love mercy, and walk humbly,"</em> doing good to all men as we have opportunity, and practicing all those duties and virtues recommended and inculcated in the Gospel: that we may thus be made meet for the inheritance of the saints in glory, and prepared to sing the praises of Immanuel in the midst of the paradise of God. (Tit 2:11, 12; Mic 6:8).</li>
+            </ol>
+        </section>
+
+        <!-- Essential Principles Section -->
+        <section id="essential-1878" class="card">
+            <h2>Essential Principles</h2>
+            <p>In 1878, a group of Universalist ministers in Boston (which included A.A. Miner, T. J. Sawyer, C. R. Moor, O. F. Safford, and A. St. John Chambre, and others) prepared a statement which embraced essential principles held in common by the Universalist preachers generally. This statement was:</p>
+
+            <blockquote>
+                <p>"We, the Universalist ministers of Boston and vicinity, observing the widespread agitation in the religious world with respect to the final destiny of our race, and more especially of those who die in impenitence and sin, and desirous that our views on this important subject should not be misunderstood, after much earnest thought and prayerful consideration present the following, not by any means as a full statement of our faith, but as indicating its general character:"</p>
+            </blockquote>
+
+            <ol>
+                <li>We reverently and devoutly accept the Holy Scriptures as containing a revelation of the character of God and of the eternal principles of his moral government.</li>
+                <li>As holiness and happiness are inseparably connected, so we believe that all sin is accompanied and followed by misery, it being a fixed principle in the divine government that God renders to every man according to his works, so that 'though hand join in hand, the wicked shall not be unpunished.'</li>
+                <li>Guided by the express teachings of revelation, we recognize God not only as our King and Judge, but also as our gracious Father, who doth not afflict willingly nor grieve the children of men; but though he cause grief, yet will he have compassion according to the multitude of his mercies.</li>
+                <li>We believe that divine justice, born of love and limited by love, primarily requires 'love to God with all the soul,' and to one's neighbor as one's self. Till these requisitions are obeyed, justice administers such discipline, including both chastisement and instruction, and for as long a period, as may be necessary to secure that obedience which it ever demands. Hence it never accepts hatred for love, nor suffering for loyalty, but uniformly and forever preserves its aim.</li>
+                <li>We believe that the salvation Christ came to effect is salvation from sin rather than from the punishment of sin, and that he must continue his work till he has put all enemies under his feet, that is, brought them in complete subjection to his law.</li>
+                <li>We believe that repentance and salvation are not limited to this life. Whenever and wherever the sinner truly turns to God, salvation will be found. God is 'the same yesterday, today, and forever,' and the obedience of his children is ever welcome to him.</li>
+                <li>To limit the saving power of Christ to this present life seems to us like limiting the Holy One of Israel; and when we consider how many millions lived and died before Christ came, and how many since, who not only never heard his name, but were ignorant of the one living God, we shudder at the thought that his infinite love should have made no provision for their welfare, and left them to annihilation, or, what is worse, endless misery. And it is but little better with myriads born in Christian lands, whose opportunities have been so meager that their endless damnation would be an act of such manifest injustice as to be in the highest degree inconsistent with the benevolent character of God.</li>
+                <li>In respect to death we believe that, however important it may be in removing manifold temptations and opening the way to a better life, and however, like other great events, it may profoundly influence man, it has no saving power. Salvation, secured in the willing mind by the agencies of divine truth, light, and love, essentially represented in Christ — whether effected here or in the future life — is salvation by Christ, and gives no warrant to the imputation to us of the 'death-and-glory' theory, alike repudiated by all.</li>
+                <li>Whatever differences in regard to the future may exist among us, none of us believe that the horizon of eternity will be relatively either largely or for a long time overcast by the clouds of sin and punishment, and in coming into the enjoyment of salvation, whensoever that may be, all the elements of penitence, forgiveness, and regeneration are involved. Justice and mercy will then be seen to be entirely at one, and God be all in all.</li>
+            </ol>
+        </section>
+
+        <!-- Proposed Profession of 1887 Section -->
+        <section id="proposed-1887" class="card">
+            <h2>Proposed Profession of 1887</h2>
+            <p>In 1887 a new profession was submitted to the General Convention of Universalists but was not officially adopted by it. That suggested profession was:</p>
+
+            <ol>
+                <li>I believe that the Holy Scriptures of the Old and New Testaments contain a revelation from God to mankind.</li>
+                <li>I believe in one God, the Father Almighty, Maker of heaven and earth; in Jesus Christ, His Son, who is the Revealer of God and the Savior of the world; and in His Holy Spirit, the Comforter, through which all disciples of Christ are united in one spiritual body.</li>
+                <li>I believe in the necessity of personal regeneration; in the forgiveness of sins; in the certainty of retribution; in the immortality of the human soul; and in the final holiness and happiness of all mankind.</li>
+                <li>I believe that the opportunities, obligations and rewards of religion are in their nature eternal, and of such immediate urgency that I ought to strive earnestly for present salvation, by repenting of my sins and diligently using the means of grace which, in His mercy, God has provided for me.</li>
+            </ol>
+        </section>
+
+        <!-- Five Principles of Faith Section -->
+        <section id="five-1899" class="card">
+            <h2>Five Principles of Faith</h2>
+            <p>In 1899, the General Convention of Universalists adopted, as conditions of fellowship, the following five principles of the Universalist Faith:</p>
+
+            <ol>
+                <li>The Universal Fatherhood of God</li>
+                <li>The spiritual authority and leadership of His Son Jesus Christ</li>
+                <li>The trustworthiness of the Bible as containing a revelation from God</li>
+                <li>The certainty of just retribution for sin</li>
+                <li>The final harmony of all souls with God</li>
+            </ol>
+        </section>
+
+        <!-- Gloria Patri Section -->
+        <section id="gloria-1903" class="card">
+            <h2><em>Gloria Patri</em>, Revised Prayerbook (1903)</h2>
+            <p>In 1903 the following profession was published in the <em>Gloria Patri</em>, Revised Prayerbook. It contains the Five Principles of Faith and was approved by the General Convention.</p>
+
+            <div class="creed-box">
+                "I believe in God, the Father Almighty and Universal;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;and in Jesus Christ his Son, the true teacher, example, and Savior of the world.<br><br>
+                I believe in the Holy Spirit, the quickener and comforter of men.<br><br>
+                I believe in the Holy Scriptures of the Old and New Testaments as a revelation of righteousness, truth and love.<br><br>
+                I believe in the Holy Church Universal;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;in the communion of saints;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;in the certainty of punishment for transgression;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;in the forgiveness of sins;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;in the life immortal;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;in the final triumph of goodness and mercy;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;and in the union and harmony, at last, of all souls with God."
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Historic and Universalist Professions of Faith &bull; Formatted for Modern Web Reading</p>
+    </footer>
+
+</body>
+</html>
